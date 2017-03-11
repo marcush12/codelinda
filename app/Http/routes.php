@@ -37,3 +37,28 @@ Route::get('/admin', function(){
 
     return view('admin.users.create');
 });
+
+Route::group(['middleware'=>'admin'], function(){
+
+    Route::resource('admin/users', 'AdminUsersController');
+
+});
+Route::get('/', function(){
+
+    return view('welcome');
+
+});
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+
+
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
